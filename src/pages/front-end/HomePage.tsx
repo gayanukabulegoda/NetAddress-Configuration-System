@@ -3,8 +3,15 @@ import Card from "./Card";
 import {useNavigate} from "react-router-dom";
 import DepartmentDetailViewPopup from "./DepartmentDetailViewPopup.tsx";
 import {useState} from "react";
+import {useState} from "react";
+import {Department} from "../back-end/object/Department.tsx";
+import {calculate} from "../back-end/Calculate.tsx";
 
-function HomePage(){
+function HomePage() {
+
+    const [departments, setDepartments] = useState<Department[]>([]);
+    const [name, setName] = useState<string>('');
+    const [count, setCount] = useState<number | string>('');
 
     const navigate = useNavigate();
     const [ShowPopup, setShowPopup] = useState(false);
@@ -18,6 +25,21 @@ function HomePage(){
     }
 
     return(
+    const handleAdd = () => {
+        if (name.trim() !== '' && count !== '' && !isNaN(Number(count))) {
+            const department = new Department(name, Number(count));
+            setDepartments([...departments, department]);
+            setName('');
+            setCount('');
+        }
+    };
+
+    const handleProcess = () => {
+        const departmentData = calculate(departments);
+        console.log(departmentData)
+    }
+
+    return (
         <div id={"HomePage"}>
             <div className="backLayouts">
                 <div></div>
@@ -37,13 +59,13 @@ function HomePage(){
                             <div>
                                 <div>
                                     <h2>Department Name</h2>
-                                    <input type="text"/>
+                                    <input type="text" value={name || ''} onChange={(e) => setName(e.target.value)}/>
                                 </div>
                                 <div>
                                     <h2>User Count</h2>
-                                    <input type="text"/>
+                                    <input type="number" value={count || ''} onChange={(e) => setCount(e.target.value)}/>
                                 </div>
-                                <button>Add</button>
+                                <button onClick={handleAdd}>Add</button>
                             </div>
                         </div>
                         <div className="table">
@@ -56,107 +78,22 @@ function HomePage(){
                                 </thead>
                                 <div>
                                     <tbody>
-                                    <tr>
-                                        <td>
-                                            Develop
-                                        </td>
-                                        <td>
-                                            10
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            Develop
-                                        </td>
-                                        <td>
-                                            10
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            Develop
-                                        </td>
-                                        <td>
-                                            10
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            Develop
-                                        </td>
-                                        <td>
-                                            10
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            Develop
-                                        </td>
-                                        <td>
-                                            10
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            Develop
-                                        </td>
-                                        <td>
-                                            10
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            Develop
-                                        </td>
-                                        <td>
-                                            10
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            Develop
-                                        </td>
-                                        <td>
-                                            10
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            Develop
-                                        </td>
-                                        <td>
-                                            10
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            Develop
-                                        </td>
-                                        <td>
-                                            10
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            Develop
-                                        </td>
-                                        <td>
-                                            10
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            Develop
-                                        </td>
-                                        <td>
-                                            10
-                                        </td>
-                                    </tr>
+                                    {departments &&
+                                    departments.map(department => (
+                                        <tr>
+                                            <td>
+                                                {department.name}
+                                            </td>
+                                            <td>
+                                                {department.count}
+                                            </td>
+                                        </tr>
+                                    ))}
                                     </tbody>
                                 </div>
                             </table>
                         </div>
-                        <button>Process</button>
+                        <button onClick={handleProcess}>Process</button>
                     </div>
                     <div>
                         <div className="cardset">
@@ -169,9 +106,18 @@ function HomePage(){
                             <Card openPopup={handleShowPopup} />
                             <Card openPopup={handleShowPopup} />
                             <Card openPopup={handleShowPopup} />
+                        <Card/>
+                            <Card/>
+                            <Card/>
+                            <Card/>
+                            <Card/>
+                            <Card/>
+                            <Card/>
+                            <Card/>
+                            <Card/>
                         </div>
                         <div className={"viewAll"}>
-                            <button onClick={ handleNavigate }>View All</button>
+                            <button onClick={handleNavigate}>View All</button>
                         </div>
                     </div>
                 </div>
