@@ -1,6 +1,11 @@
 import '../../css/Card.css'
 
-const Card = () =>{
+const Card = ({openPopup}) =>{
+
+    const handlePopup = () => {
+        openPopup();
+    }
+
   return(
     <div className="card">
         <h1>Department Name</h1>
@@ -8,7 +13,7 @@ const Card = () =>{
         <h1>First IP</h1>
         <h1>Last IP</h1>
         <h1>Subnet mask</h1>
-        <button>View</button>
+        <button onClick={handlePopup}>View</button>
     </div>
   )
 }
