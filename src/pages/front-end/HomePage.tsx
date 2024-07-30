@@ -1,13 +1,20 @@
 import '../../css/HomePage.css'
 import Card from "./Card";
 import {useNavigate} from "react-router-dom";
+import DepartmentDetailViewPopup from "./DepartmentDetailViewPopup.tsx";
+import {useState} from "react";
 
 function HomePage(){
 
     const navigate = useNavigate();
+    const [ShowPopup, setShowPopup] = useState(false);
 
     const handleNavigate = () => {
         navigate("/ViewAllPage")
+    }
+
+    const handleShowPopup = () => {
+        setShowPopup(!ShowPopup);
     }
 
     return(
@@ -17,6 +24,9 @@ function HomePage(){
                 <div></div>
                 <div></div>
             </div>
+
+            {ShowPopup && <DepartmentDetailViewPopup handelCloseBtn={handleShowPopup}/>}
+
             <div className="content">
                 <h1 className="title">Netaddress Configuration System</h1>
                 <div>
@@ -150,15 +160,15 @@ function HomePage(){
                     </div>
                     <div>
                         <div className="cardset">
-                            <Card />
-                            <Card />
-                            <Card />
-                            <Card />
-                            <Card />
-                            <Card />
-                            <Card />
-                            <Card />
-                            <Card />
+                            <Card openPopup={handleShowPopup} />
+                            <Card openPopup={handleShowPopup} />
+                            <Card openPopup={handleShowPopup} />
+                            <Card openPopup={handleShowPopup} />
+                            <Card openPopup={handleShowPopup} /><Card openPopup={handleShowPopup} />
+                            <Card openPopup={handleShowPopup} />
+                            <Card openPopup={handleShowPopup} />
+                            <Card openPopup={handleShowPopup} />
+                            <Card openPopup={handleShowPopup} />
                         </div>
                         <div className={"viewAll"}>
                             <button onClick={ handleNavigate }>View All</button>
