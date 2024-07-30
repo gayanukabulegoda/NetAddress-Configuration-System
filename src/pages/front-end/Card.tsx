@@ -1,21 +1,30 @@
-import '../../css/Card.css'
+import '../../css/Card.css';
+import {Department} from "../back-end/object/Department.tsx";
 
-const Card = ({openPopup}) =>{
+interface Props {
+    data?: Department;
+    openPopup: (data?: Department) => void;
+}
 
+const Card = ({ data, openPopup }: Props) => {
     const handlePopup = () => {
-        openPopup();
+        openPopup(data);
     }
 
-  return(
-    <div className="card">
-        <h1>Department Name</h1>
-        <h1>Department Users</h1>
-        <h1>First IP</h1>
-        <h1>Last IP</h1>
-        <h1>Subnet mask</h1>
-        <button onClick={handlePopup}>View</button>
-    </div>
-  )
+    if (!data) {
+        return null;  // Return null or a placeholder if data is not available
+    }
+
+    return (
+        <div className="card">
+            <h1>{data.name}</h1>
+            <h1>{data.count}</h1>
+            <h1>{data.firstUsableIp}</h1>
+            <h1>{data.lastUsableIp}</h1>
+            <h1>{data.subnetMask}</h1>
+            <button onClick={handlePopup}>View</button>
+        </div>
+    )
 }
 
 export default Card;

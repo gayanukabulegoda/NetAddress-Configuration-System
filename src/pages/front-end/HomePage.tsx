@@ -1,30 +1,52 @@
-import '../../css/HomePage.css'
+import '../../css/HomePage.css';
 import Card from "./Card";
-import {useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import DepartmentDetailViewPopup from "./DepartmentDetailViewPopup.tsx";
-import {useState} from "react";
-import {useState} from "react";
-import {Department} from "../back-end/object/Department.tsx";
-import {calculate} from "../back-end/Calculate.tsx";
+import {useEffect, useState} from "react";
+import { Department } from "../back-end/object/Department.tsx";
+import { calculate } from "../back-end/Calculate.tsx";
+import {setTableData} from "./table.tsx";
 
 function HomePage() {
-
     const [departments, setDepartments] = useState<Department[]>([]);
     const [name, setName] = useState<string>('');
     const [count, setCount] = useState<number | string>('');
+    const [showPopup, setShowPopup] = useState(false);
+    const [data, setData] = useState<Department[]>([])
+    const [popupData, setPopupData] = useState<Department>()
 
     const navigate = useNavigate();
-    const [ShowPopup, setShowPopup] = useState(false);
+
+    useEffect(() => {
+        // Load data from localStorage if available
+        const savedDepartments = localStorage.getItem('departments');
+        const savedData = localStorage.getItem('data');
+
+        if (savedDepartments) {
+            setDepartments(JSON.parse(savedDepartments));
+        }
+
+        if (savedData) {
+            setData(JSON.parse(savedData));
+        }
+
+        localStorage.removeItem('departments');
+        localStorage.removeItem('data');
+    }, []);
 
     const handleNavigate = () => {
-        navigate("/ViewAllPage")
+        localStorage.setItem('departments', JSON.stringify(departments));
+        localStorage.setItem('data', JSON.stringify(data));
+
+        setTableData(departments)
+        navigate("/ViewAllPage");
     }
 
-    const handleShowPopup = () => {
-        setShowPopup(!ShowPopup);
+    const handleShowPopup = (data?: Department) => {
+        setPopupData(data);
+        setShowPopup(!showPopup);
     }
 
-    return(
     const handleAdd = () => {
         if (name.trim() !== '' && count !== '' && !isNaN(Number(count))) {
             const department = new Department(name, Number(count));
@@ -36,7 +58,8 @@ function HomePage() {
 
     const handleProcess = () => {
         const departmentData = calculate(departments);
-        console.log(departmentData)
+        setData(departmentData);
+        console.log(departmentData);
     }
 
     return (
@@ -47,10 +70,9 @@ function HomePage() {
                 <div></div>
             </div>
 
-            {ShowPopup && <DepartmentDetailViewPopup handelCloseBtn={handleShowPopup}/>}
-
+            {showPopup && <DepartmentDetailViewPopup handelCloseBtn={handleShowPopup} data={popupData}/>}
             <div className="content">
-                <h1 className="title">Netaddress Configuration System</h1>
+                <h1 className="title">NetAddress Configuration System</h1>
                 <div>
                     <div>
                         <div className="inputs">
@@ -73,48 +95,26 @@ function HomePage() {
                                 <thead>
                                 <tr>
                                     <th>Department</th>
-                                    <th>Users.</th>
+                                    <th>Users</th>
                                 </tr>
                                 </thead>
-                                <div>
-                                    <tbody>
-                                    {departments &&
-                                    departments.map(department => (
-                                        <tr>
-                                            <td>
-                                                {department.name}
-                                            </td>
-                                            <td>
-                                                {department.count}
-                                            </td>
-                                        </tr>
-                                    ))}
-                                    </tbody>
-                                </div>
+                                <tbody>
+                                {departments.map(department => (
+                                    <tr key={department.name}>
+                                        <td>{department.name}</td>
+                                        <td>{department.count}</td>
+                                    </tr>
+                                ))}
+                                </tbody>
                             </table>
                         </div>
                         <button onClick={handleProcess}>Process</button>
                     </div>
                     <div>
                         <div className="cardset">
-                            <Card openPopup={handleShowPopup} />
-                            <Card openPopup={handleShowPopup} />
-                            <Card openPopup={handleShowPopup} />
-                            <Card openPopup={handleShowPopup} />
-                            <Card openPopup={handleShowPopup} /><Card openPopup={handleShowPopup} />
-                            <Card openPopup={handleShowPopup} />
-                            <Card openPopup={handleShowPopup} />
-                            <Card openPopup={handleShowPopup} />
-                            <Card openPopup={handleShowPopup} />
-                        <Card/>
-                            <Card/>
-                            <Card/>
-                            <Card/>
-                            <Card/>
-                            <Card/>
-                            <Card/>
-                            <Card/>
-                            <Card/>
+                            {data.map(department => (
+                                <Card key={department.name} data={department} openPopup={handleShowPopup} />
+                            ))}
                         </div>
                         <div className={"viewAll"}>
                             <button onClick={handleNavigate}>View All</button>
@@ -123,7 +123,7 @@ function HomePage() {
                 </div>
             </div>
         </div>
-    )
+    );
 }
 
-export default HomePage
+export default HomePage;
