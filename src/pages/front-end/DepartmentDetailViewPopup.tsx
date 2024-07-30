@@ -1,6 +1,12 @@
 import '../../css/DepartmentDetailViewPopup.css'
+import {Department} from "../back-end/object/Department.tsx";
 
-const DepartmentDetailViewPopup = ({handelCloseBtn}) => {
+interface Props {
+    data?: Department;
+    handelCloseBtn: (data?: Department) => void;
+}
+
+const DepartmentDetailViewPopup = ({data, handelCloseBtn}: Props) => {
     function handleNavigate() {
         handelCloseBtn();
     }
@@ -20,41 +26,41 @@ const DepartmentDetailViewPopup = ({handelCloseBtn}) => {
                     <thead>
                     <tr>
                         <th>Department</th>
-                        <th>Administration</th>
+                        <th>{data?.name}</th>
                     </tr>
                     </thead>
                     <tbody>
                     <tr>
                         <th>No. of Users</th>
-                        <th>25</th>
+                        <th>{data?.count}</th>
                     </tr>
                     <tr>
                         <th>Block Size</th>
-                        <th>04</th>
+                        <th>{data?.blockSize}</th>
                     </tr>
                     <tr>
                         <th>Default Gateway</th>
-                        <th>192.168.1.1</th>
+                        <th>{data?.defaultGateway}</th>
                     </tr>
                     <tr>
                         <th>Network Address</th>
-                        <th>192.168.1.0</th>
+                        <th>{data?.networkAddress}</th>
                     </tr>
                     <tr>
                         <th>First Usable IP</th>
-                        <th>192.168.1.1</th>
+                        <th>{data?.firstUsableIp}</th>
                     </tr>
                     <tr>
                         <th>Last Usable IP</th>
-                        <th>192.168.1.254</th>
+                        <th>{data?.lastUsableIp}</th>
                     </tr>
                     <tr>
                         <th>Broadcast Address</th>
-                        <th>192.168.1.255</th>
+                        <th>{data?.broadcastAddress}</th>
                     </tr>
                     <tr>
                         <th>Subnet Mask</th>
-                        <th>255.255.255.252</th>
+                        <th>{data?.subnetMask}</th>
                     </tr>
                     </tbody>
                 </table>

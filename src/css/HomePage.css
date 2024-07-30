@@ -128,7 +128,6 @@
 #HomePage table{
     width: 100%;
     border-radius: 16px;
-    border: 1px solid rgba(255, 255, 255, 0.85);
     background: linear-gradient(130deg, rgba(255, 255, 255, 0.60) -9.69%, rgba(255, 255, 255, 0.40) 114.23%);
     backdrop-filter: blur(6px);
 }
@@ -142,7 +141,6 @@
 #HomePage th ,
 #HomePage td{
     height: 89px;
-    border: 1px solid #FFFFFF;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -152,6 +150,8 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     align-items: center;
+    border-bottom: 1px solid #FFFFFF;
+    border-radius: 16px;
 }
 
 #HomePage td{
