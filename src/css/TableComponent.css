@@ -1,0 +1,97 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+*{
+    margin: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    text-align: center;
+}
+
+#TablePage{
+    width: 100%;
+    height: 100vh;
+    background-image: url("../assets/Full Configuration Detail Page.png");
+    background-size: cover;
+    padding: 12px 23px;
+}
+
+#TablePage tr > :first-child{
+    width: 236px;
+}
+
+#TablePage tr > :nth-child(2){
+    width: 175px;
+}
+
+#TablePage tr > :nth-child(3){
+    width: 140px;
+}
+
+#TablePage tr > :nth-child(4){
+    width: 219px;
+}
+
+#TablePage tr > :nth-child(5){
+    width: 218px;
+}
+
+#TablePage tr > :nth-child(6){
+    width: 208px;
+}
+
+#TablePage tr > :nth-child(7){
+    width: 208px;
+}
+
+#TablePage tr > :nth-child(8){
+    width: 221px;
+}
+
+#TablePage tr > :nth-child(9){
+    width: 251px;
+    border: 0;
+}
+
+#TablePage tr{
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.26);
+}
+
+#TablePage tr th{
+    padding: 17px 0;
+    border-right: 2px solid #FFFFFF;
+}
+
+table{
+    border-collapse: collapse;
+}
+
+#TablePage .table{
+    height: 868px;
+    overflow-y: scroll;
+    max-height: 932px;
+}
+
+#TablePage thead{
+    position: sticky;
+    top: 0;
+}
+
+#TablePage .table::-webkit-scrollbar{
+    width: 0;
+}
+
+.scrolled{
+    backdrop-filter: blur(10px);
+}
+
+.closeBtn svg{
+    float: right;
+}
+
+.closeBtn{
+    margin-bottom: 6vh;
+}

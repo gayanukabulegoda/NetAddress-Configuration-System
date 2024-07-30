@@ -1,7 +1,15 @@
 import '../../css/HomePage.css'
 import Card from "./Card";
+import {useNavigate} from "react-router-dom";
 
 function HomePage(){
+
+    const navigate = useNavigate();
+
+    const handleNavigate = () => {
+        navigate("/ViewAllPage")
+    }
+
     return(
         <div id={"HomePage"}>
             <div className="backLayouts">
@@ -153,7 +161,7 @@ function HomePage(){
                             <Card />
                         </div>
                         <div className={"viewAll"}>
-                            <button>View All</button>
+                            <button onClick={ handleNavigate }>View All</button>
                         </div>
                     </div>
                 </div>
