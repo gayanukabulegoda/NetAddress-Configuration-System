@@ -1,6 +1,8 @@
 import '../../css/HomePage.css'
 import Card from "./Card";
 import {useNavigate} from "react-router-dom";
+import DepartmentDetailViewPopup from "./DepartmentDetailViewPopup.tsx";
+import {useState} from "react";
 import {useState} from "react";
 import {Department} from "../back-end/object/Department.tsx";
 import {calculate} from "../back-end/Calculate.tsx";
@@ -12,11 +14,17 @@ function HomePage() {
     const [count, setCount] = useState<number | string>('');
 
     const navigate = useNavigate();
+    const [ShowPopup, setShowPopup] = useState(false);
 
     const handleNavigate = () => {
         navigate("/ViewAllPage")
     }
 
+    const handleShowPopup = () => {
+        setShowPopup(!ShowPopup);
+    }
+
+    return(
     const handleAdd = () => {
         if (name.trim() !== '' && count !== '' && !isNaN(Number(count))) {
             const department = new Department(name, Number(count));
@@ -38,6 +46,9 @@ function HomePage() {
                 <div></div>
                 <div></div>
             </div>
+
+            {ShowPopup && <DepartmentDetailViewPopup handelCloseBtn={handleShowPopup}/>}
+
             <div className="content">
                 <h1 className="title">Netaddress Configuration System</h1>
                 <div>
@@ -86,6 +97,15 @@ function HomePage() {
                     </div>
                     <div>
                         <div className="cardset">
+                            <Card openPopup={handleShowPopup} />
+                            <Card openPopup={handleShowPopup} />
+                            <Card openPopup={handleShowPopup} />
+                            <Card openPopup={handleShowPopup} />
+                            <Card openPopup={handleShowPopup} /><Card openPopup={handleShowPopup} />
+                            <Card openPopup={handleShowPopup} />
+                            <Card openPopup={handleShowPopup} />
+                            <Card openPopup={handleShowPopup} />
+                            <Card openPopup={handleShowPopup} />
                         <Card/>
                             <Card/>
                             <Card/>
