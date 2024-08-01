@@ -50,7 +50,11 @@ const allocateSubnets = (departmentsArray: Department[], baseNetworkAddress: str
 
     let currentNetworkAddress: string = baseNetworkAddress;
     for (const department of departmentsArray) {
-        department.setNetworkInfo(currentNetworkAddress);
+        if (department instanceof Department) {
+            department.setNetworkInfo(currentNetworkAddress);
+        } else {
+            console.error("department is not an instance of Department");
+        }
         currentNetworkAddress = NetworkUtils.numberToIp(NetworkUtils.ipToNumber(currentNetworkAddress) + department.blockSize);
     }
 }

@@ -62,6 +62,10 @@ function HomePage() {
         console.log(departmentData);
     }
 
+    const handelRefresh = () =>{
+        window.location.reload();
+    }
+
     return (
         <div id={"HomePage"}>
             <div className="backLayouts">
@@ -72,6 +76,14 @@ function HomePage() {
 
             {showPopup && <DepartmentDetailViewPopup handelCloseBtn={handleShowPopup} data={popupData}/>}
             <div className="content">
+                <div className="refresh" onClick={handelRefresh}>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40" fill="none">
+                        <rect width="40" height="40" rx="20" fill="white"/>
+                        <path
+                            d="M27 13V17.1667M27 17.1667H22.8333M27 17.1667L24.5 14.9097C23.1731 13.7221 21.4209 13 19.5 13C15.3579 13 12 16.3579 12 20.5C12 24.6422 15.3579 28 19.5 28C23.0693 28 26.0563 25.5067 26.8142 22.1667"
+                            stroke="#109DFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
                 <h1 className="title">NetAddress Configuration System</h1>
                 <div>
                     <div>

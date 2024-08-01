@@ -1,4 +1,4 @@
-import {NetworkUtils} from "../utils/NetworkUtils.tsx";
+import { NetworkUtils } from "../utils/NetworkUtils.tsx";
 
 export class Department {
     name: string;
