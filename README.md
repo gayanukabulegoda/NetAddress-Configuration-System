@@ -17,6 +17,8 @@ The NetAddress Configuration System is designed to streamline the process of net
 8. [Developed Report](#developed-report)
 9. [Acknowledgments](#acknowledgments)
 10. [License](#license)
+11. [Contributing](#contributing)
+12. [Security](#security)
 
 ## Technologies Used
 The following technologies were used in the development of the NetAddress Configuration System:
@@ -90,13 +92,19 @@ This project is a collaborative effort by the following team members:
 - **[Aravinda](https://github.com/aravinda-gamage):** UI Design Support and Documentation Support
 
 ## Developed Report
-For a detailed analysis and insights into the project, refer to our [developed report](https://drive.google.com/file/d/117rcmgSi6xcnvW_kNQofqyep9sQbDRGE/view?usp=sharing).
+For a detailed analysis and insights into the project, refer to our [developed report](https://drive.google.com/file/d/1JWhd5xVpFUCNOnSCx2gRsFDmbTIU01CA/view?usp=sharing).
 
 ## Acknowledgments
 We would like to thank our instructors and peers for their support and guidance throughout the development of this project. Special thanks to the contributors and the open-source community for their invaluable resources and inspiration.
 
 ## License
 This project is licensed under the MIT License - see the [MIT License](LICENSE) file for details.
+
+## Contributing
+We welcome contributions to the NetAddress Configuration System. Please see our [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines on how to contribute.
+
+## Security
+If you discover any security vulnerabilities, please follow our [SECURITY.md](SECURITY.md) guidelines for reporting them.
 
 ##
 <div align="center">
@@ -105,7 +113,6 @@ This project is licensed under the MIT License - see the [MIT License](LICENSE) 
 <a href="https://html.com/html5/" target="_blank"><img src = "https://img.shields.io/badge/HTML5-100000?style=for-the-badge&logo=HTML5&logoColor=white"></a>
 <a href="https://css3.com/" target="_blank"><img src = "https://img.shields.io/badge/CSS3-100000?style=for-the-badge&logo=CSS3&logoColor=white"></a>
 <a href="https://www.typescriptlang.org/" target="_blank"><img src = "https://img.shields.io/badge/TypeScript-100000?style=for-the-badge&logo=TypeScript&logoColor=white"></a>
-<a href="https://www.javascript.com/" target="_blank"><img src = "https://img.shields.io/badge/JavaScript-100000?style=for-the-badge&logo=JavaScript&logoColor=white"></a>
 <a href="https://react.dev/" target="_blank"><img src = "https://img.shields.io/badge/React-100000?style=for-the-badge&logo=react&logoColor=white"></a>
 <a href="https://vitejs.dev/guide/" target="_blank"><img src = "https://img.shields.io/badge/Vite-100000?style=for-the-badge&logo=vite&logoColor=white"></a>
 </div> <br>
